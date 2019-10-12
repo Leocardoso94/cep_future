@@ -6,16 +6,16 @@ import 'package:cep_future/services/via_cep.dart';
 
 const CEP_SIZE = 8;
 
-Future<Cep> fetchCepFromServices(String cepWithLeftPad) {
-  return Future.any([fetchViaCepService(cepWithLeftPad)]);
-}
+Future<Cep> fetchCepFromServices(String cepWithLeftPad) => Future.any([
+      fetchViaCepService(cepWithLeftPad),
+    ]);
 
-void throwApplicationError(Error e) {
+void throwApplicationError(Object e) {
   throw e;
 }
 
-void handleServicesError(List<Error> aggregatedErrors) {
-  if (aggregatedErrors != null) {
+void handleServicesError(Object aggregatedErrors) {
+  if (aggregatedErrors.runtimeType == SimpleError) {
     throw SimpleError('Todos os serviços de CEP retornaram erro.');
   }
 
@@ -35,12 +35,11 @@ String leftPadWithZeros(String cep) {
   return ''.padLeft(CEP_SIZE - cep.length).replaceAll(' ', '0') + cep;
 }
 
-Future<dynamic> cepFuture(String cepRawValue) async {
-  await Future.value(cepRawValue)
-      .then(removeSpecialCharacters)
-      .then(validateInputLength)
-      .then(leftPadWithZeros)
-      .then(fetchCepFromServices)
-      .catchError(handleServicesError)
-      .catchError(throwApplicationError);
-}
+Future<Cep> cepFuture(String cepRawValue) async =>
+    await Future.value(cepRawValue)
+        .then(removeSpecialCharacters)
+        .then(validateInputLength)
+        .then(leftPadWithZeros)
+        .then(fetchCepFromServices)
+        .catchError(handleServicesError)
+        .catchError(throwApplicationError);

@@ -28,4 +28,14 @@ void main() {
     expect(leftPadWithZeros('05516'), '00005516');
     expect(leftPadWithZeros('12345678'), '12345678');
   });
+
+  test('cepFuture success', () async {
+    var cep = await cepFuture('05653-070');
+
+    expect(cep.city, 'São Paulo');
+    expect(cep.cep, '05653070');
+    expect(cep.neighborhood, 'Jardim Leonor');
+    expect(cep.state, 'SP');
+    expect(cep.street, 'Praça Roberto Gomes Pedrosa');
+  });
 }
