@@ -1,8 +1,8 @@
 name: cep_future
-description: A new Flutter package project.
+description: Busca por CEP integrado diretamente aos serviços dos Correios, ViaCEP e outros.
 version: 0.0.1
-author:
-homepage:
+author: Leonardo Cardoso <leocardosoti@gmail.com>
+homepage: https://github.com/Leocardoso94/cep_future
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
