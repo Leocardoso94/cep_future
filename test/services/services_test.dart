@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('fetchViaCepService success', () async {
-    var cep = await fetchViaCepService('05653070');
+    final cep = await fetchViaCepService('05653070');
     expect(cep.city, 'São Paulo');
   });
 

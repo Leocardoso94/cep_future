@@ -30,7 +30,7 @@ void main() {
   });
 
   test('cepFuture success', () async {
-    var cep = await cepFuture('05653-070');
+    final cep = await cepFuture('05653-070');
 
     expect(cep.city, 'São Paulo');
     expect(cep.cep, '05653070');
