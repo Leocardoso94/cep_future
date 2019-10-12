@@ -1,6 +1,6 @@
 <h1 align="center">cep_future 💌</h1>
 
-[![Build Status](https://travis-ci.com/Leocardoso94/cep_future.svg?branch=master)](https://travis-ci.com/Leocardoso94/cep_future)
+[![Pub](https://img.shields.io/pub/v/cep_future.svg)](https://pub.dartlang.org/packages/cep_future) [![Build Status](https://travis-ci.com/Leocardoso94/cep_future.svg?branch=master)](https://travis-ci.com/Leocardoso94/cep_future)
 
 Uma library para Dart que que efetua a busca de CEPs em diversos serviços.
 Fortemente inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/cep-promise)
