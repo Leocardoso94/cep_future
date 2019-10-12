@@ -1,4 +1,3 @@
-import 'package:cep_future/cep_future.dart';
 import 'package:cep_future/services/via_cep.dart';
 import 'package:flutter_test/flutter_test.dart';
 
