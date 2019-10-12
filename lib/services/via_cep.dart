@@ -30,7 +30,7 @@ Cep extractCepValuesFromResponse(Map<String, dynamic> responseObject) {
 }
 
 Future<Cep> fetchViaCepService(String cepWithLeftPad) async {
-  String url = 'https://viacep.com.br/ws/$cepWithLeftPad/json/';
+  final String url = 'https://viacep.com.br/ws/$cepWithLeftPad/json/';
 
   return http
       .get(
