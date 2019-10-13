@@ -28,5 +28,16 @@ main() async {
     print(result.neighborhood);
     print(result.state);
     print(result.street);
+
+    // or
+
+    print(result.toJson())
+    // {
+    //     'cep': '05653070',
+    //     'state': 'SP',
+    //     'city': 'São Paulo',
+    //     'street': 'Praça Roberto Gomes Pedrosa',
+    //     'neighborhood': 'Jardim Leonor'
+    // }
 }
 ```
