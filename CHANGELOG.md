@@ -1,5 +1,9 @@
 # CHANGES
 
+## 0.1.1
+
+Small fixes
+
 ## 0.1.0
 
 Add correios service support and `.toJson` method on result

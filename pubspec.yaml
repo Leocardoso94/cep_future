@@ -1,6 +1,6 @@
 name: cep_future
 description: Busca por CEP integrado diretamente aos serviços dos Correios, ViaCEP e outros.
-version: 0.1.0
+version: 0.1.1
 author: Leonardo Cardoso <leocardosoti@gmail.com>
 homepage: https://github.com/Leocardoso94/cep_future
 
