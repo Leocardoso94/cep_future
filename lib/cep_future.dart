@@ -17,7 +17,7 @@ void throwApplicationError(Object e) {
 }
 
 void handleServicesError(Object aggregatedErrors) {
-  if (aggregatedErrors.runtimeType == SimpleError) {
+  if (aggregatedErrors.runtimeType == ServiceError) {
     throw SimpleError('Todos os serviços de CEP retornaram erro.');
   }
 

@@ -46,4 +46,12 @@ void main() {
       'neighborhood': 'Jardim Leonor'
     });
   });
+
+  test('cepFuture error', () async {
+    try {
+      await cepFuture('11111');
+    } catch (e) {
+      expect(e.message, 'Todos os serviços de CEP retornaram erro.');
+    }
+  });
 }
