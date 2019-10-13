@@ -1,8 +1,7 @@
 pull_request_rules:
   - name: automatic merge on CI success and review
     conditions:
-      # - status-success=Travis CI - Pull Request
-      - status-success=Flutter Ci / Test and Analyze
+      - status-success=Travis CI - Pull Request
       - '#approved-reviews-by>=1'
     actions:
       merge:
@@ -10,8 +9,7 @@ pull_request_rules:
 
   - name: automatic merge on CI success
     conditions:
-      # - status-success=Travis CI - Pull Request
-      - status-success=Flutter Ci / Test and Analyze
+      - status-success=Travis CI - Pull Request
       - author=Leocardoso94
     actions:
       merge:
