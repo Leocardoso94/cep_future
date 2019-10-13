@@ -37,5 +37,13 @@ void main() {
     expect(cep.neighborhood, 'Jardim Leonor');
     expect(cep.state, 'SP');
     expect(cep.street, 'Praça Roberto Gomes Pedrosa');
+
+    expect(cep.toJson(), {
+      'cep': '05653070',
+      'state': 'SP',
+      'city': 'São Paulo',
+      'street': 'Praça Roberto Gomes Pedrosa',
+      'neighborhood': 'Jardim Leonor'
+    });
   });
 }
