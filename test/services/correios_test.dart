@@ -21,4 +21,20 @@ void main() {
       expect(e.service, Service.Correios);
     }
   });
+
+  test('extractValuesFromSuccessResponse error', () {
+    try {
+      extractValuesFromSuccessResponse({});
+    } catch (e) {
+      expect(e.message, 'Não foi possível interpretar a resposta.');
+    }
+  });
+
+  test('extractValuesFromSuccessResponse error', () {
+    try {
+      translateErrorMessage({});
+    } catch (e) {
+      expect(e.message, 'Erro ao se conectar com o serviço Correios');
+    }
+  });
 }
