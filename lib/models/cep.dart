@@ -14,4 +14,12 @@ class Cep {
   final String city;
   final String street;
   final String neighborhood;
+
+  Map<String, dynamic> toJson() => {
+        'cep': cep,
+        'state': state,
+        'city': city,
+        'street': street,
+        'neighborhood': neighborhood,
+      };
 }
