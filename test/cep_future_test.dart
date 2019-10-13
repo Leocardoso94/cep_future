@@ -16,13 +16,18 @@ void main() {
     expect(removeSpecialCharacters('-055-16,'), '05516');
   });
 
-  // test('validateInputLength', () {
-  //   expect(validateInputLength('12345'), '12345');
-  //   expect(
-  //     validateInputLength('12345121212'),
-  //     instamce(matcher),
-  //   );
-  // });
+  test('validateInputLength', () {
+    expect(validateInputLength('12345'), '12345');
+    expect(validateInputLength('12345678'), '12345678');
+  });
+
+  test('validateInputLength error', () {
+    try {
+      validateInputLength('123456789');
+    } catch (e) {
+      expect(e.message, 'CEP deve conter exatamente 8 caracteres.');
+    }
+  });
 
   test('leftPadWithZeros', () {
     expect(leftPadWithZeros('05516'), '00005516');
