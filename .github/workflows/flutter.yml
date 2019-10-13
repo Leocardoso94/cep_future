@@ -4,7 +4,7 @@ name: Flutter Ci
 
 jobs:
   build:
-    name: Build APK
+    name: Test and Analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,6 +14,6 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: flutter pub get
+      - run: flutter doctor
       - run: flutter analyze
       - run: flutter test
