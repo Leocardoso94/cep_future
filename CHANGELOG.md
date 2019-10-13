@@ -1,5 +1,9 @@
 # CHANGES
 
+## 0.1.4
+
+Update promise race implementation
+
 ## 0.1.3
 
 Increase Coverage
