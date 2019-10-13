@@ -1,0 +1,1 @@
+enum Service { ViaCEP, Correios }

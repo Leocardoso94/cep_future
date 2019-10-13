@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cep_future/enum.dart';
 import 'package:cep_future/error.dart';
 import 'package:cep_future/models/cep.dart';
 import 'package:http/http.dart' as http;
@@ -29,6 +30,17 @@ Cep extractCepValuesFromResponse(Map<String, dynamic> responseObject) {
   );
 }
 
+void throwApplicationError(Object e) {
+  final String message = e is SimpleError
+      ? e.message
+      : 'Erro ao se conectar com o serviço ViaCEP.';
+
+  throw ServiceError(
+    service: Service.ViaCEP,
+    message: message,
+  );
+}
+
 Future<Cep> fetchViaCepService(String cepWithLeftPad) async {
   final String url = 'https://viacep.com.br/ws/$cepWithLeftPad/json/';
 
@@ -41,5 +53,6 @@ Future<Cep> fetchViaCepService(String cepWithLeftPad) async {
       )
       .then(analyzeAndParseResponse)
       .then(checkForViaCepError)
-      .then(extractCepValuesFromResponse);
+      .then(extractCepValuesFromResponse)
+      .catchError(throwApplicationError);
 }
