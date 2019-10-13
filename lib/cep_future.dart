@@ -2,12 +2,14 @@ library cep_future;
 
 import 'package:cep_future/error.dart';
 import 'package:cep_future/models/cep.dart';
+import 'package:cep_future/services/correios.dart';
 import 'package:cep_future/services/via_cep.dart';
 
 const CEP_SIZE = 8;
 
 Future<Cep> fetchCepFromServices(String cepWithLeftPad) => Future.any([
       fetchViaCepService(cepWithLeftPad),
+      fetchCorreiosService(cepWithLeftPad),
     ]);
 
 void throwApplicationError(Object e) {
