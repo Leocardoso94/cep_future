@@ -21,7 +21,7 @@ Um simples exemplo de uso:
 import 'package:cep_future/cep_future.dart';
 
 main() async {
-    var result = await cepFuture('05653-070');
+    final result = await cepFuture('05653-070');
 
     print(result.city);
     print(result.cep);
@@ -31,7 +31,7 @@ main() async {
 
     // or
 
-    print(result.toJson())
+    print(result.toJson());
     // {
     //     'cep': '05653070',
     //     'state': 'SP',

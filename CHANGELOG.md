@@ -1,5 +1,9 @@
 # CHANGES
 
+## 0.1.2
+
+Add example
+
 ## 0.1.1
 
 Small fixes
