@@ -1,5 +1,9 @@
 # CHANGES
 
+## 0.1.3
+
+Increase Coverage
+
 ## 0.1.2
 
 Add example
