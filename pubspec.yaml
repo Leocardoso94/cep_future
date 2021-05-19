@@ -5,17 +5,18 @@ author: Leonardo Cardoso <leocardosoti@gmail.com>
 homepage: https://github.com/Leocardoso94/cep_future
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.0+2
-  xml2json: ^4.0.0
+  http: ^0.13.3
+  xml2json: ^5.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  test: ^1.16.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

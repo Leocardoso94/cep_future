@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
-
 class Cep {
   const Cep({
-    @required this.cep,
-    @required this.state,
-    @required this.city,
-    @required this.street,
-    @required this.neighborhood,
+    this.cep = 'N/A',
+    this.state = 'N/A',
+    this.city = 'N/A',
+    this.street = 'N/A',
+    this.neighborhood = 'N/A',
   });
 
   final String cep;

@@ -1,5 +1,6 @@
 import 'package:cep_future/cep_future.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:cep_future/error.dart';
+import 'package:test/test.dart';
 
 void main() {
   // test('adds one to input values', () {
@@ -25,7 +26,8 @@ void main() {
     try {
       validateInputLength('123456789');
     } catch (e) {
-      expect(e.message, 'CEP deve conter exatamente 8 caracteres.');
+      if (e is ServiceError)
+        expect(e.message, 'CEP deve conter exatamente 8 caracteres.');
     }
   });
 
@@ -56,7 +58,8 @@ void main() {
     try {
       await cepFuture('11111');
     } catch (e) {
-      expect(e.message, 'Todos os serviços de CEP retornaram erro.');
+      if (e is ServiceError)
+        expect(e.message, 'Todos os serviços de CEP retornaram erro.');
     }
   });
 }

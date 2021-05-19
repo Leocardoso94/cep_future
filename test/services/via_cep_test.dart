@@ -1,6 +1,7 @@
 import 'package:cep_future/enum.dart';
+import 'package:cep_future/error.dart';
 import 'package:cep_future/services/via_cep.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('fetchViaCepService success', () async {
@@ -17,7 +18,8 @@ void main() {
     try {
       await fetchViaCepService('11111111');
     } catch (e) {
-      expect(e.message, 'CEP não encontrado na base do ViaCEP.');
+      if (e is ServiceError)
+        expect(e.message, 'CEP não encontrado na base do ViaCEP.');
     }
   });
 
@@ -25,8 +27,10 @@ void main() {
     try {
       await fetchViaCepService('aa');
     } catch (e) {
-      expect(e.message, 'Erro ao se conectar com o serviço ViaCEP');
-      expect(e.service, Service.ViaCEP);
+      if (e is ServiceError) {
+        expect(e.message, 'Erro ao se conectar com o serviço ViaCEP');
+        expect(e.service, Service.ViaCEP);
+      }
     }
   });
 }

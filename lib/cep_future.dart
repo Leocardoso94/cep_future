@@ -64,11 +64,21 @@ String leftPadWithZeros(String cep) {
   return ''.padLeft(CEP_SIZE - cep.length).replaceAll(' ', '0') + cep;
 }
 
-Future<Cep> cepFuture(String cepRawValue) async =>
-    await Future.value(cepRawValue)
-        .then(removeSpecialCharacters)
-        .then(validateInputLength)
-        .then(leftPadWithZeros)
-        .then(fetchCepFromServices)
-        .catchError(handleServicesError)
-        .catchError(throwApplicationError);
+Future<Cep> cepFuture(String cepRawValue) async {
+  var cep = const Cep();
+
+  try {
+    var cepStringTreated = removeSpecialCharacters(cepRawValue);
+
+    cepStringTreated = validateInputLength(cepStringTreated);
+
+    cepStringTreated = leftPadWithZeros(cepStringTreated);
+
+    cep = await fetchCepFromServices(cepStringTreated);
+  } catch (e) {
+    handleServicesError(e);
+    throwApplicationError(e);
+  }
+
+  return cep;
+}

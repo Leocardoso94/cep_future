@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
@@ -8,7 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:xml2json/xml2json.dart';
 
 void throwApplicationError(Object e) {
-  final String message = e is SimpleError
+  final String? message = e is SimpleError
       ? e.message
       : 'Erro ao se conectar com o serviço Correios.';
 
@@ -18,7 +19,7 @@ void throwApplicationError(Object e) {
   );
 }
 
-String translateErrorMessage(Map<String, dynamic> errorResponse) {
+String? translateErrorMessage(Map<String, dynamic> errorResponse) {
   try {
     return errorResponse['soap:Envelope']['soap:Body']['soap:Fault']
         ['faultstring'];
@@ -27,7 +28,7 @@ String translateErrorMessage(Map<String, dynamic> errorResponse) {
   }
 }
 
-Map<String, dynamic> analyzeAndParseResponse(http.Response response) {
+Map<String, dynamic>? analyzeAndParseResponse(http.Response response) {
   final Xml2Json xml2json = Xml2Json();
 
   xml2json.parse(response.body);
@@ -38,7 +39,7 @@ Map<String, dynamic> analyzeAndParseResponse(http.Response response) {
     return result;
   }
 
-  final String errorMessage = translateErrorMessage(result);
+  final String? errorMessage = translateErrorMessage(result);
 
   throw SimpleError(errorMessage);
 }
@@ -61,20 +62,28 @@ Cep extractValuesFromSuccessResponse(Map<String, dynamic> response) {
 }
 
 Future<Cep> fetchCorreiosService(String cepWithLeftPad) async {
-  const String url =
-      'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente';
+  final url = Uri.parse(
+      'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente');
 
-  return http
-      .post(
-        url,
-        headers: {
-          'Content-Type': 'text/xml;charset=UTF-8',
-          'cache-control': 'no-cache',
-        },
-        body:
-            '<?xml version="1.0"?>\n<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\n  <soapenv:Header />\n  <soapenv:Body>\n    <cli:consultaCEP>\n      <cep>$cepWithLeftPad</cep>\n    </cli:consultaCEP>\n  </soapenv:Body>\n</soapenv:Envelope>',
-      )
-      .then(analyzeAndParseResponse)
-      .then(extractValuesFromSuccessResponse)
-      .catchError(throwApplicationError);
+  Cep resposta = const Cep();
+
+  final response = await http.post(
+    url,
+    headers: {
+      'Content-Type': 'text/xml;charset=UTF-8',
+      'cache-control': 'no-cache',
+    },
+    body:
+        '<?xml version="1.0"?>\n<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/">\n  <soapenv:Header />\n  <soapenv:Body>\n    <cli:consultaCEP>\n      <cep>$cepWithLeftPad</cep>\n    </cli:consultaCEP>\n  </soapenv:Body>\n</soapenv:Envelope>',
+  );
+
+  try {
+    final analyze = analyzeAndParseResponse(response);
+
+    if (analyze != null) resposta = extractValuesFromSuccessResponse(analyze);
+  } catch (e) {
+    throwApplicationError(e);
+  }
+
+  return resposta;
 }

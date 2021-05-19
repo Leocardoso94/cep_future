@@ -6,7 +6,7 @@ import 'package:cep_future/error.dart';
 import 'package:cep_future/models/cep.dart';
 import 'package:http/http.dart' as http;
 
-Map<String, dynamic> analyzeAndParseResponse(http.Response response) {
+Map<String, dynamic>? analyzeAndParseResponse(http.Response response) {
   if (response.statusCode == 200) return json.decode(response.body);
 
   throw SimpleError('Erro ao se conectar com o serviço ViaCEP');
@@ -31,7 +31,7 @@ Cep extractCepValuesFromResponse(Map<String, dynamic> responseObject) {
 }
 
 void throwApplicationError(Object e) {
-  final String message = e is SimpleError
+  final String? message = e is SimpleError
       ? e.message
       : 'Erro ao se conectar com o serviço ViaCEP.';
 
@@ -42,17 +42,23 @@ void throwApplicationError(Object e) {
 }
 
 Future<Cep> fetchViaCepService(String cepWithLeftPad) async {
-  final String url = 'https://viacep.com.br/ws/$cepWithLeftPad/json/';
+  final url = Uri.parse('https://viacep.com.br/ws/$cepWithLeftPad/json/');
+  Cep resposta = const Cep();
 
-  return http
-      .get(
-        url,
-        headers: {
-          'content-type': 'application/json;charset=utf-8',
-        },
-      )
-      .then(analyzeAndParseResponse)
-      .then(checkForViaCepError)
-      .then(extractCepValuesFromResponse)
-      .catchError(throwApplicationError);
+  final response = await http.get(
+    url,
+    headers: {
+      'content-type': 'application/json;charset=utf-8',
+    },
+  );
+
+  try {
+    final analyze = analyzeAndParseResponse(response);
+
+    if (analyze != null) resposta = extractCepValuesFromResponse(analyze);
+  } catch (e) {
+    throwApplicationError(e);
+  }
+
+  return resposta;
 }

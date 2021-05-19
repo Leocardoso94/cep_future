@@ -1,6 +1,7 @@
 import 'package:cep_future/enum.dart';
+import 'package:cep_future/error.dart';
 import 'package:cep_future/services/correios.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('fetchCorreiosService success', () async {
@@ -17,8 +18,10 @@ void main() {
     try {
       await fetchCorreiosService('11111111');
     } catch (e) {
-      expect(e.message, 'CEP INVÁLIDO');
-      expect(e.service, Service.Correios);
+      if (e is ServiceError) {
+        expect(e.message, 'CEP INVÁLIDO');
+        expect(e.service, Service.Correios);
+      }
     }
   });
 
@@ -26,7 +29,8 @@ void main() {
     try {
       extractValuesFromSuccessResponse({});
     } catch (e) {
-      expect(e.message, 'Não foi possível interpretar a resposta.');
+      if (e is ServiceError)
+        expect(e.message, 'Não foi possível interpretar a resposta.');
     }
   });
 
@@ -34,7 +38,8 @@ void main() {
     try {
       translateErrorMessage({});
     } catch (e) {
-      expect(e.message, 'Erro ao se conectar com o serviço Correios');
+      if (e is ServiceError)
+        expect(e.message, 'Erro ao se conectar com o serviço Correios');
     }
   });
 }
