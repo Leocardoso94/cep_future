@@ -1,8 +1,8 @@
-<h1 align="center">cep_future 💌</h1>
+<h1 align="center">ViaCepFlutter</h1>
 
 [![Pub](https://img.shields.io/pub/v/cep_future.svg)](https://pub.dartlang.org/packages/cep_future) [![Build Status](https://travis-ci.com/Leocardoso94/cep_future.svg?branch=master)](https://travis-ci.com/Leocardoso94/cep_future) [![Coverage Status](https://coveralls.io/repos/github/Leocardoso94/cep_future/badge.svg?branch=master)](https://coveralls.io/github/Leocardoso94/cep_future?branch=master)
 
-Uma library para Dart que que efetua a busca de CEPs em diversos serviços.
+Uma library para Dart que efetua a busca de CEPs em diversos serviços.
 Fortemente inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/cep-promise)
 
 ## Features
