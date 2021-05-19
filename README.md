@@ -20,10 +20,10 @@ Fortemente inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/
 Um simples exemplo de uso:
 
 ```dart
-import 'package:cep_future/cep_future.dart';
+import 'package:via_cep_flutter/via_cep_flutter.dart';
 
 main() async {
-    final result = await cepFuture('05653-070');
+    final result = await readAddressByCep('05653-070')('05653-070');
 
     print(result.city);
     print(result.cep);
