@@ -1,7 +1,5 @@
 <h1 align="center">ViaCepFlutter</h1>
 
-[![Pub](https://img.shields.io/pub/v/cep_future.svg)](https://pub.dartlang.org/packages/cep_future) [![Build Status](https://travis-ci.com/Leocardoso94/cep_future.svg?branch=master)](https://travis-ci.com/Leocardoso94/cep_future) [![Coverage Status](https://coveralls.io/repos/github/Leocardoso94/cep_future/badge.svg?branch=master)](https://coveralls.io/github/Leocardoso94/cep_future?branch=master)
-
 ### Este repositório é um fork atualizado de [Leocardoso94](https://github.com/Leocardoso94/cep_future) com suporte para null safety
 
 Uma biblioteca para Flutter que efetua a busca de CEPs em diversos serviços.
@@ -23,7 +21,7 @@ Um simples exemplo de uso:
 import 'package:via_cep_flutter/via_cep_flutter.dart';
 
 main() async {
-    final result = await readAddressByCep('05653-070')('05653-070');
+    final result = await readAddressByCep('05653-070');
 
     print(result.city);
     print(result.cep);

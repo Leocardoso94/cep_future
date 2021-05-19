@@ -1,29 +1,14 @@
 # CHANGES
 
-## 0.1.4
+## 0.1.2 
 
-Update promise race implementation
-
-## 0.1.3
-
-Increase Coverage
-
-## 0.1.2
-
-Add example
+ * Removed text from the ```README.md``` file that was from the original repository
+ * Fixed a error in the example code.
 
 ## 0.1.1
 
-Small fixes
-
-## 0.1.0
-
-Add correios service support and `.toJson` method on result
-
-## 0.0.2
-
-Via cep support
+Few changes to the ```README.md``` file.
 
 ## 0.0.1
 
-Initial release. Relies on pre-released master.
+Initial release. Added ViaCepFlutter with support to null-safety.

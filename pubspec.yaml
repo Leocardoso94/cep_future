@@ -1,7 +1,6 @@
 name: via_cep_flutter
 description: Pacote para fazer uso da API ViaCEP em Flutter
-version: 0.0.1
-author: Gustavo Lopes Rodrigues <mysteriousfunkyman@gmail.com>
+version: 0.1.2
 homepage: https://github.com/MysteRys337/cep_future
 
 environment:
