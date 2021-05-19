@@ -5,6 +5,8 @@
 Uma library para Dart que efetua a busca de CEPs em diversos serviços.
 Fortemente inspirado no pacote [CEP Promise](https://github.com/filipedeschamps/cep-promise)
 
+### Este repositório é um fork atualizado de [Leocardoso94](https://github.com/Leocardoso94/cep_future) com suporte para null safety
+
 ## Features
 
 - Sempre atualizado em tempo-real por se conectar diretamente aos serviços dos Correios e ViaCEP.
