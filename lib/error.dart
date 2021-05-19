@@ -1,4 +1,4 @@
-import 'package:cep_future/enum.dart';
+import 'package:via_cep_flutter/enum.dart';
 
 class SimpleError extends Error {
   SimpleError(this.message);

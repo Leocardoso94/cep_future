@@ -2,10 +2,10 @@ library cep_future;
 
 import 'dart:async';
 
-import 'package:cep_future/error.dart';
-import 'package:cep_future/models/cep.dart';
-import 'package:cep_future/services/correios.dart';
-import 'package:cep_future/services/via_cep.dart';
+import 'package:via_cep_flutter/error.dart';
+import 'package:via_cep_flutter/models/cep.dart';
+import 'package:via_cep_flutter/services/correios.dart';
+import 'package:via_cep_flutter/services/via_cep.dart';
 
 const CEP_SIZE = 8;
 
@@ -64,7 +64,8 @@ String leftPadWithZeros(String cep) {
   return ''.padLeft(CEP_SIZE - cep.length).replaceAll(' ', '0') + cep;
 }
 
-Future<Cep> cepFuture(String cepRawValue) async {
+/// ## Receive a CEP and return the address corresponding by that CEP
+Future<Cep> readAddressByCep(String cepRawValue) async {
   var cep = const Cep();
 
   try {

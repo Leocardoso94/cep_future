@@ -1,7 +1,7 @@
-import 'package:cep_future/cep_future.dart';
+import 'package:via_cep_flutter/via_cep_flutter.dart';
 
 Future<void> main() async {
-  final result = await cepFuture('05653-070');
+  final result = await readAddressByCep('05653-070');
 
   print(result.city);
   print(result.cep);

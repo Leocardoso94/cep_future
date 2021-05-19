@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:cep_future/enum.dart';
-import 'package:cep_future/error.dart';
-import 'package:cep_future/models/cep.dart';
+import 'package:via_cep_flutter/enum.dart';
+import 'package:via_cep_flutter/error.dart';
+import 'package:via_cep_flutter/models/cep.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml2json/xml2json.dart';
 

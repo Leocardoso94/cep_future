@@ -1,6 +1,6 @@
-import 'package:cep_future/enum.dart';
-import 'package:cep_future/error.dart';
-import 'package:cep_future/services/via_cep.dart';
+import 'package:via_cep_flutter/enum.dart';
+import 'package:via_cep_flutter/error.dart';
+import 'package:via_cep_flutter/services/via_cep.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,8 +1,8 @@
-name: cep_future
-description: Busca por CEP integrado diretamente aos serviços dos Correios, ViaCEP e outros.
-version: 0.1.4
-author: Leonardo Cardoso <leocardosoti@gmail.com>
-homepage: https://github.com/Leocardoso94/cep_future
+name: via_cep_flutter
+description: Pacote para fazer uso da API ViaCEP em Flutter
+version: 0.0.1
+author: Gustavo Lopes Rodrigues <mysteriousfunkyman@gmail.com>
+homepage: https://github.com/MysteRys337/cep_future
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

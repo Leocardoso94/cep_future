@@ -1,5 +1,5 @@
-import 'package:cep_future/cep_future.dart';
-import 'package:cep_future/error.dart';
+import 'package:via_cep_flutter/via_cep_flutter.dart';
+import 'package:via_cep_flutter/error.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -37,7 +37,7 @@ void main() {
   });
 
   test('cepFuture success', () async {
-    final cep = await cepFuture('05653-070');
+    final cep = await readAddressByCep('05653-070');
 
     expect(cep.city, 'São Paulo');
     expect(cep.cep, '05653070');
@@ -56,7 +56,7 @@ void main() {
 
   test('cepFuture error', () async {
     try {
-      await cepFuture('11111');
+      await readAddressByCep('11111');
     } catch (e) {
       if (e is ServiceError)
         expect(e.message, 'Todos os serviços de CEP retornaram erro.');
